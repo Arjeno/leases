@@ -1,6 +1,9 @@
 require 'active_record'
+require 'action_controller'
+
 require 'leases'
 require 'with_model'
+require 'rspec/rails'
 
 ActiveRecord::Base.establish_connection(:adapter => 'sqlite3',
                                         :database => File.dirname(__FILE__) + '/leaser.sqlite3')
@@ -20,4 +23,9 @@ RSpec.configure do |config|
     Apartment::Database.stub(:drop)
   end
 
+end
+
+module Dummy
+  class Application < Rails::Application
+  end
 end

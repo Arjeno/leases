@@ -17,7 +17,7 @@ describe Leases do
     before(:each) { Leases.leasing(Account) }
 
     it { Leases.leasers.should == ['Account'] }
-    it { Apartment.excluded_models.should == ['Account'] }
+    it { Apartment.excluded_models.should include 'Account' }
 
   end
 

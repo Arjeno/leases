@@ -25,4 +25,19 @@ describe Leases::Model do
 
   end
 
+  describe :shared_by_leasers do
+
+    with_model :User do
+      table do |t|
+        t.string :name
+        t.timestamps
+      end
+    end
+
+    before(:each) { User.shared_by_leasers }
+
+    it { Apartment.excluded_models.should include 'User' }
+
+  end
+
 end

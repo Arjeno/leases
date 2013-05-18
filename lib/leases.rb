@@ -17,10 +17,6 @@ module Leases
     self.leasers << object.name
     self.leasers.uniq!
 
-    Apartment.excluded_models ||= []
-    Apartment.excluded_models += [object.name]
-    Apartment.excluded_models.uniq!
-
     Apartment.database_names = Proc.new { Leases.leaser_names }
 
     object

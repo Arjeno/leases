@@ -12,8 +12,16 @@ module Leases
         include Base
         include Callbacks
 
+        shared_by_leasers
+
         Leases.leasing(self)
         self.leases_options = options
+      end
+
+      def shared_by_leasers
+        Apartment.excluded_models ||= []
+        Apartment.excluded_models += [self.name]
+        Apartment.excluded_models.uniq!
       end
 
     end

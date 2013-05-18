@@ -3,6 +3,12 @@ module Leases
 
     extend ActiveSupport::Concern
 
+    included do
+
+      helper_method :current_leaser
+
+    end
+
     module ClassMethods
 
       # Uses a leaser as the context in a controller.
@@ -14,6 +20,10 @@ module Leases
         end
       end
 
+    end
+
+    def current_leaser
+      Thread.current[:leaser]
     end
 
   end

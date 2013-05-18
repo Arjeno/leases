@@ -4,6 +4,7 @@ class AnonymousController < ActionController::Base
   include Rails.application.routes.url_helpers
   def index
     @account = Thread.current[:leaser]
+    @current_leaser = current_leaser
     render :text => :none
   end
 end
@@ -32,5 +33,6 @@ describe Leases::Controller, :type => :controller do
   end
 
   it { assigns(:account).should == account }
+  it { assigns(:current_leaser).should == account }
 
 end

@@ -22,6 +22,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec', '>= 2.3'
   gem.add_development_dependency 'rspec-rails', '~> 2.0'
   gem.add_development_dependency 'sqlite3'
+  gem.add_development_dependency 'with_model'
 
   gem.add_dependency 'rails', '>= 3.0'
   gem.add_dependency 'apartment', '>= 0.20'

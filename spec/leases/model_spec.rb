@@ -9,11 +9,15 @@ describe Leases::Model do
     end
   end
 
-  it { Account.respond_to?(:leases).should be_true }
+  describe :leases do
 
-  it 'should set up lease' do
-    Account.should_receive(:setup_lease)
-    Account.leases
+    it { Account.respond_to?(:leases).should be_true }
+
+    it 'should set leases_options' do
+      Account.leases :name => :slug
+      Account.leases_options.should == { :name => :slug }
+    end
+
   end
 
 end

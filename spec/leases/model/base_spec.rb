@@ -17,12 +17,6 @@ describe Leases::Model::Base do
 
   subject { account }
 
-  describe :setup_lease do
-
-    it { Account.leases_options.should == options }
-
-  end
-
   describe :leaser_name do
 
     context 'default' do

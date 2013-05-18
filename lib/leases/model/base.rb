@@ -11,14 +11,6 @@ module Leases
 
       end
 
-      module ClassMethods
-
-        def setup_lease(options={})
-          self.leases_options = options
-        end
-
-      end
-
       # Name of the leaser, used for naming the database.
       # This can be set in the leaser_options. Must be unique.
       def leaser_name
@@ -49,7 +41,7 @@ module Leases
         Apartment::Database.reset
       end
 
-      # Visits a leaser by entering and leaving.
+      # Visit a leaser by entering and leaving.
       # Very useful for executing code in a leaser-context
       #
       # => account.visit { User.find(1) }
@@ -62,7 +54,7 @@ module Leases
         end
       end
 
-      # A new lease is created.
+      # Create a new lease.
       # This is usually called when a model is created.
       #
       # => account.lease!
@@ -70,7 +62,7 @@ module Leases
         Apartment::Database.create(leaser_name)
       end
 
-      # A lease is broken.
+      # Break a lease.
       # This is usually called when a model is destroyed.
       #
       # => account.break!

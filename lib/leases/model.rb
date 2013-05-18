@@ -11,7 +11,8 @@ module Leases
       def leases(options={})
         include Base
         include Callbacks
-        setup_lease(options)
+
+        self.leases_options = options
       end
 
     end

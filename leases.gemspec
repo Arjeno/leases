@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = Leases::VERSION
   gem.authors       = ['Arjen Oosterkamp']
   gem.email         = ['mail@arjen.me']
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ''
+  gem.description   = %q{Database multi-tenancy for Rails.}
+  gem.summary       = %q{Database multi-tenancy for Rails.}
+  gem.homepage      = 'https://github.com/Arjeno/leases'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

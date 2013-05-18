@@ -12,6 +12,7 @@ module Leases
         include Base
         include Callbacks
 
+        Leases.leasing(self)
         self.leases_options = options
       end
 

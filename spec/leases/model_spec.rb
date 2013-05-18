@@ -18,6 +18,11 @@ describe Leases::Model do
       Account.leases_options.should == { :name => :slug }
     end
 
+    it 'should add the class to a list of leasers' do
+      Account.leases :name => :slug
+      Leases.leasers.should include 'Account'
+    end
+
   end
 
 end

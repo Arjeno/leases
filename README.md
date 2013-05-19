@@ -1,5 +1,7 @@
 # Leases
 
+[![Build Status](https://secure.travis-ci.org/Arjeno/leases.png?branch=master)](http://travis-ci.org/Arjeno/leases)
+
 Database multi-tenancy for Rails.
 
 ## Installation
@@ -13,7 +15,10 @@ gem 'leases'
 ## Usage
 
 ```ruby
-# app/models/account.rb
+[![Gem Version](https://badge.fury.io/rb/sunspot_association.png)](http://badge.fury.io/rb/sunspot_association) [![Build Status](https://secure.travis-ci.org/Arjeno/sunspot_association.png?branch=master)](http://travis-ci.org/Arjeno/sunspot_association) [![Dependency Status](https://gemnasium.com/Arjeno/sunspot_association.png)](https://gemnasium.com/Arjeno/sunspot_association) [![Coverage Status](https://coveralls.io/repos/Arjeno/sunspot_association/badge.png?branch=master)](https://coveralls.io/r/Arjeno/sunspot_association)
+
+# app/models/account.r
+
 class Account < ActiveRecord::Base
   leases
 end

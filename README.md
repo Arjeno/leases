@@ -16,7 +16,6 @@ gem 'leases'
 
 ```ruby
 # app/models/account.rb
-
 class Account < ActiveRecord::Base
   leases
 end

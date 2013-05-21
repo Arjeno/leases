@@ -22,6 +22,8 @@ module Leases
         Apartment.excluded_models ||= []
         Apartment.excluded_models += [self.name]
         Apartment.excluded_models.uniq!
+
+        Apartment::Database.process_excluded_models
       end
 
     end

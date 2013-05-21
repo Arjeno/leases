@@ -21,6 +21,7 @@ RSpec.configure do |config|
     Apartment::Database.stub(:reset)
     Apartment::Database.stub(:create)
     Apartment::Database.stub(:drop)
+    Apartment::Database.stub(:process_excluded_models)
   end
 
 end

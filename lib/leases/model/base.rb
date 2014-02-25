@@ -11,8 +11,10 @@ module Leases
 
       end
 
+      ##
       # Name of the leaser, used for naming the database.
       # This can be set in the leaser_options. Must be unique.
+      #
       def leaser_name
         name = self.class.leases_options[:name]
 
@@ -25,26 +27,38 @@ module Leases
         end
       end
 
+      ##
       # Enter the leaser-context.
       #
-      # => account.enter
+      # === Example
+      #
+      # account.enter
+      #
       def enter
         Apartment::Database.switch(leaser_name)
-        Thread.current[:leaser] = self
+        Leases.current = self
       end
 
+      ##
       # Leave the leaser-context.
       #
-      # => account.leave
+      # === Example
+      #
+      # account.leave
+      #
       def leave
-        Thread.current[:leaser] = nil
+        Leases.current = nil
         Apartment::Database.reset
       end
 
+      ##
       # Visit a leaser by entering and leaving.
       # Very useful for executing code in a leaser-context
       #
-      # => account.visit { User.find(1) }
+      # === Example
+      #
+      # account.visit { User.find(1) }
+      #
       def visit(&block)
         enter
         begin
@@ -54,18 +68,26 @@ module Leases
         end
       end
 
+      ##
       # Create a new lease.
       # This is usually called when a model is created.
       #
-      # => account.lease!
+      # === Example
+      #
+      # account.lease!
+      #
       def lease!
         Apartment::Database.create(leaser_name)
       end
 
+      ##
       # Break a lease.
       # This is usually called when a model is destroyed.
       #
-      # => account.break!
+      # === Example
+      #
+      # account.break!
+      #
       def break!
         Apartment::Database.drop(leaser_name)
       end

@@ -31,4 +31,15 @@ describe Leases do
 
   end
 
+  describe :current do
+
+    it 'should get current leaser from Thread' do
+      account = Account.create
+
+      Leases.current = account
+      Leases.current.should == account
+    end
+
+  end
+
 end

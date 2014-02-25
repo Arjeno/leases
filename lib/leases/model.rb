@@ -8,6 +8,15 @@ module Leases
 
     module ClassMethods
 
+      ##
+      # Marks model as a leaser.
+      #
+      # === Examples
+      #
+      # leases
+      # leases :name => :slug
+      # leases :name => Proc.new { |c| "acount_#{c.id}" }
+      #
       def leases(options={})
         include Base
         include Callbacks
@@ -18,6 +27,16 @@ module Leases
         self.leases_options = options
       end
 
+      ##
+      # Marks model as a shared model.
+      # This prevents the model being multi-tenant.
+      #
+      # === Example
+      #
+      # class User < ActiveRecord::Base
+      #   shared_by_leasers
+      # end
+      #
       def shared_by_leasers
         Apartment.excluded_models ||= []
         Apartment.excluded_models += [self.name]

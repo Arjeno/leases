@@ -28,5 +28,6 @@ end
 
 module Dummy
   class Application < Rails::Application
+    config.secret_token = '6623f46b9f15d3ac359e2322b7977cdf'
   end
 end

@@ -4,6 +4,18 @@
 
 Database multi-tenancy for Rails.
 
+## Supported Rails versions
+
+- Rails 3.1.x
+- Rails 3.2.x
+- Rails 4.0.x
+
+## Supported Ruby versions
+
+- Ruby 1.9.3
+- Ruby 2.0.0
+- Ruby 2.1.1
+
 ## Installation
 
 Add this line to your Gemfile and run `bundle`.

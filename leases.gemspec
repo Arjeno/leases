@@ -17,12 +17,12 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_development_dependency 'bundler', '>= 1.0.0'
+  gem.add_development_dependency 'bundler',     '>= 1.3.0'
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'rspec', '>= 2.11'
+  gem.add_development_dependency 'rspec',       '>= 2.11'
   gem.add_development_dependency 'rspec-rails', '>= 2.11'
   gem.add_development_dependency 'sqlite3'
   gem.add_development_dependency 'with_model'
 
-  gem.add_dependency 'apartment', '~> 0.21.0'
+  gem.add_dependency 'apartment', '>= 0.24.2'
 end

@@ -11,9 +11,13 @@ module Leases
 
     module ClassMethods
 
+      ##
       # Uses a leaser as the context in a controller.
       #
-      # => visit_as :current_account
+      # === Example
+      #
+      # visit_as :current_account
+      #
       def visit_as(leaser)
         around_filter do |c, block|
           c.send(leaser).visit(&block)
@@ -22,8 +26,11 @@ module Leases
 
     end
 
+    ##
+    # Returns the current leaser. This is also a helper method.
+    #
     def current_leaser
-      Thread.current[:leaser]
+      Leases.current
     end
 
   end

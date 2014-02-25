@@ -4,6 +4,17 @@ module Leases
 
       extend ActiveSupport::Concern
 
+      ##
+      # Model callbacks
+      #
+      # === Examples
+      #
+      # on_enter :do_something
+      # on_leave :do_something
+      # on_lease :do_something
+      # on_break :do_something
+      #
+
       included do
 
         ## Callbacks
@@ -15,12 +26,6 @@ module Leases
 
         define_model_callbacks :enter, :leave, :lease, :break
 
-        # Define callback aliases
-        #
-        # => on_enter :method
-        # => on_leave :method
-        # => on_lease :method
-        # => on_break :method
         class << self
           alias :on_enter :after_enter
           alias :on_leave :after_leave

@@ -81,6 +81,22 @@ end
 
 We're using `apartment` for managing and switching databases. This is a fantastic gem that you should check out: https://github.com/influitive/apartment. Apartment supports MySQL and PostgreSQL.
 
+## Background processing
+
+We recommend using `apartment-sidekiq` to process background jobs (https://github.com/influitive/apartment-sidekiq). This is a zero-configuration gem that enables background processing in a tenant context.
+
+Doing it yourself is also possible, here is a simple example:
+
+```ruby
+class SomeWorker
+  def some_process(account_id)
+    Account.find(account_id).visit do
+      # Your processing here
+    end
+  end
+end
+```
+
 ## Migrating
 
 ```

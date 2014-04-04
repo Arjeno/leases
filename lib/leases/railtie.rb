@@ -5,7 +5,7 @@ module Leases
   class Railtie < Rails::Railtie
 
     config.to_prepare do
-      Apartment.database_names = Proc.new { Leases.leaser_names }
+      Apartment.tenant_names = Proc.new { Leases.leaser_names }
     end
 
   end

@@ -27,7 +27,7 @@ describe Leases do
     let!(:account_2) { Account.create }
 
     it { Leases.leaser_names.should == [account_1.leaser_name, account_2.leaser_name] }
-    it { Apartment.database_names.should == Leases.leaser_names }
+    it { Apartment.tenant_names.should == Leases.leaser_names }
 
   end
 

@@ -21,7 +21,7 @@ module Leases
     self.leasers << object.name
     self.leasers.uniq!
 
-    Apartment.database_names = Proc.new { Leases.leaser_names }
+    Apartment.tenant_names = Proc.new { Leases.leaser_names }
 
     object
   end

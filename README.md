@@ -9,6 +9,7 @@ Database multi-tenancy for Rails.
 - Rails 3.1.x
 - Rails 3.2.x
 - Rails 4.0.x
+- Rails 4.1.x
 
 ## Supported Ruby versions
 

@@ -35,7 +35,7 @@ module Leases
       # account.enter
       #
       def enter
-        Apartment::Database.switch(leaser_name)
+        Apartment::Tenant.switch(leaser_name)
         Leases.current = self
       end
 
@@ -48,7 +48,7 @@ module Leases
       #
       def leave
         Leases.current = nil
-        Apartment::Database.reset
+        Apartment::Tenant.reset
       end
 
       ##
@@ -77,7 +77,7 @@ module Leases
       # account.lease!
       #
       def lease!
-        Apartment::Database.create(leaser_name)
+        Apartment::Tenant.create(leaser_name)
       end
 
       ##
@@ -89,7 +89,7 @@ module Leases
       # account.break!
       #
       def break!
-        Apartment::Database.drop(leaser_name)
+        Apartment::Tenant.drop(leaser_name)
       end
 
     end

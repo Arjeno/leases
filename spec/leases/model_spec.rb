@@ -11,7 +11,7 @@ describe Leases::Model do
 
   describe :leases do
 
-    it { Account.respond_to?(:leases).should be_true }
+    it { Account.respond_to?(:leases).should be true }
 
     it 'should set leases_options' do
       Account.leases :name => :slug

@@ -49,7 +49,7 @@ describe Leases::Model::Base do
 
     after(:each) { account.enter }
 
-    it { Apartment::Database.should_receive(:switch).with(account.leaser_name) }
+    it { Apartment::Tenant.should_receive(:switch).with(account.leaser_name) }
     it { Thread.current[:leaser].id.should == account.id }
 
   end
@@ -58,7 +58,7 @@ describe Leases::Model::Base do
 
     after(:each) { account.leave }
 
-    it { Apartment::Database.should_receive(:reset) }
+    it { Apartment::Tenant.should_receive(:reset) }
     it { Thread.current[:leaser].should == nil }
 
   end
@@ -78,7 +78,7 @@ describe Leases::Model::Base do
 
     after(:each) { account.lease! }
 
-    it { Apartment::Database.should_receive(:create).with(account.leaser_name) }
+    it { Apartment::Tenant.should_receive(:create).with(account.leaser_name) }
 
   end
 
@@ -86,7 +86,7 @@ describe Leases::Model::Base do
 
     after(:each) { account.break! }
 
-    it { Apartment::Database.should_receive(:drop).with(account.leaser_name) }
+    it { Apartment::Tenant.should_receive(:drop).with(account.leaser_name) }
 
   end
 

@@ -19,10 +19,11 @@ Gem::Specification.new do |gem|
 
   gem.add_development_dependency 'bundler',     '>= 1.3.0'
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'rspec',       '>= 2.11'
-  gem.add_development_dependency 'rspec-rails', '>= 2.11'
+  gem.add_development_dependency 'rspec',       '~> 2.11'
+  gem.add_development_dependency 'rspec-rails', '~> 2.11'
   gem.add_development_dependency 'sqlite3'
   gem.add_development_dependency 'with_model'
+  gem.add_development_dependency 'test-unit', '~> 3.0'
 
-  gem.add_dependency 'apartment', '>= 0.24.2'
+  gem.add_dependency 'apartment', '>= 1.0.0'
 end

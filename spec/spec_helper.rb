@@ -17,11 +17,11 @@ RSpec.configure do |config|
 
   config.before(:each) do
     # Stub Apartment database interactions
-    Apartment::Database.stub(:switch)
-    Apartment::Database.stub(:reset)
-    Apartment::Database.stub(:create)
-    Apartment::Database.stub(:drop)
-    Apartment::Database.stub(:process_excluded_models)
+    Apartment::Tenant.stub(:switch)
+    Apartment::Tenant.stub(:reset)
+    Apartment::Tenant.stub(:create)
+    Apartment::Tenant.stub(:drop)
+    Apartment::Tenant.stub(:process_excluded_models)
   end
 
 end

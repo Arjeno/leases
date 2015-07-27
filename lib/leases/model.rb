@@ -42,7 +42,7 @@ module Leases
         Apartment.excluded_models += [self.name]
         Apartment.excluded_models.uniq!
 
-        Apartment::Tenant.process_excluded_models
+        Apartment::Tenant.init
       end
 
     end

@@ -16,12 +16,13 @@ RSpec.configure do |config|
   config.extend WithModel
 
   config.before(:each) do
+    Apartment.excluded_models = []
+
     # Stub Apartment database interactions
     Apartment::Tenant.stub(:switch)
     Apartment::Tenant.stub(:reset)
     Apartment::Tenant.stub(:create)
     Apartment::Tenant.stub(:drop)
-    Apartment::Tenant.stub(:process_excluded_models)
   end
 
 end

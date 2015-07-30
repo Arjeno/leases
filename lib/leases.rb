@@ -21,8 +21,6 @@ module Leases
     self.leasers << object.name
     self.leasers.uniq!
 
-    Apartment.tenant_names = Proc.new { Leases.leaser_names }
-
     object
   end
 
@@ -37,12 +35,10 @@ module Leases
   #
   # [Array] List of leaser names
   #
-  def leaser_names(preload=true)
-    Rails.application.eager_load! if preload
-
+  def leaser_names
     leasers.map do |l|
       model = l.constantize
-      model.all.collect(&:leaser_name)
+      model.leaser_names
     end.flatten
   end
 

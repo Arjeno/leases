@@ -11,6 +11,42 @@ module Leases
 
       end
 
+      module ClassMethods
+
+        ##
+        # Returns array of leaser names (schema names).
+        #
+        # === Example
+        #
+        # Account.leaser_names # => ['account-1', 'account-2']
+        #
+        # === Returns
+        #
+        # [Array] List of leaser names
+        #
+        def leaser_names
+          name = self.leases_options[:name]
+
+          if name.is_a?(Symbol)
+            # Simply pluck the column
+            self.pluck(name)
+          elsif name.is_a?(Proc)
+            # Name is a proc, find record in matches
+            names = []
+            self.find_each do |object|
+              names << object.leaser_name
+            end
+            names
+          else
+            # Default option: pluck ids and prefix it
+            prefix  = self.name.parameterize
+            ids     = self.pluck(:id)
+            ids.collect { |id| [prefix, id].join('-') }
+          end
+        end
+
+      end
+
       ##
       # Name of the leaser, used for naming the database.
       # This can be set in the leaser_options. Must be unique.
@@ -18,12 +54,12 @@ module Leases
       def leaser_name
         name = self.class.leases_options[:name]
 
-        if name.nil?
-          [self.class.name.parameterize, id].join('-')
-        elsif name.is_a?(Symbol)
+        if name.is_a?(Symbol)
           send(name)
         elsif name.is_a?(Proc)
           name.call(self)
+        else
+          [self.class.name.parameterize, id].join('-')
         end
       end
 

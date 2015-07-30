@@ -23,6 +23,8 @@ describe Leases do
 
   describe :leaser_names do
 
+    before(:each) { Apartment.tenant_names = Proc.new { Leases.leaser_names } }
+
     let!(:account_1) { Account.create }
     let!(:account_2) { Account.create }
 

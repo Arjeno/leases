@@ -17,6 +17,43 @@ describe Leases::Model::Base do
 
   subject { account }
 
+  describe :leaser_names do
+
+    let!(:account_1) { Account.create(:name => 'John Doe', :slug => 'john-doe') }
+    let!(:account_2) { Account.create(:name => 'Jane Doe', :slug => 'jane-doe') }
+
+    context 'with default' do
+
+      let(:options) { {} }
+
+      it 'should return list of names' do
+        Account.leaser_names.should == ["account-#{account_1.id}", "account-#{account_2.id}"]
+      end
+
+    end
+
+    context 'with symbol' do
+
+      let(:options) { { :name => :slug } }
+
+      it 'should return list of names' do
+        Account.leaser_names.should == ['john-doe', 'jane-doe']
+      end
+
+    end
+
+    context 'with proc' do
+
+      let(:options) { { :name => Proc.new { |a| [a.id, a.name].join('-') } } }
+
+      it 'should return list of names' do
+        Account.leaser_names.should == ["#{account_1.id}-#{account_1.name}", "#{account_2.id}-#{account_2.name}"]
+      end
+
+    end
+
+  end
+
   describe :leaser_name do
 
     context 'default' do

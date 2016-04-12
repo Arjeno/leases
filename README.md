@@ -13,7 +13,6 @@ Database multi-tenancy for Rails.
 
 ## Supported Ruby versions
 
-- Ruby 1.9.3
 - Ruby 2.0.0
 - Ruby 2.1.1
 - Ruby 2.2.1

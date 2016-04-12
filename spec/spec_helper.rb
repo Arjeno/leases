@@ -19,8 +19,7 @@ RSpec.configure do |config|
     Apartment.excluded_models = []
 
     # Stub Apartment database interactions
-    Apartment::Tenant.stub(:switch)
-    Apartment::Tenant.stub(:reset)
+    Apartment::Tenant.stub(:switch!)
     Apartment::Tenant.stub(:create)
     Apartment::Tenant.stub(:drop)
   end

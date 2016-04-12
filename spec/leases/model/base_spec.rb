@@ -86,7 +86,7 @@ describe Leases::Model::Base do
 
     after(:each) { account.enter }
 
-    it { Apartment::Tenant.should_receive(:switch).with(account.leaser_name) }
+    it { Apartment::Tenant.should_receive(:switch!).with(account.leaser_name) }
     it { Thread.current[:leaser].id.should == account.id }
 
   end
@@ -95,7 +95,7 @@ describe Leases::Model::Base do
 
     after(:each) { account.leave }
 
-    it { Apartment::Tenant.should_receive(:reset) }
+    it { Apartment::Tenant.should_receive(:switch!).with() }
     it { Thread.current[:leaser].should == nil }
 
   end

@@ -71,7 +71,7 @@ module Leases
       # account.enter
       #
       def enter
-        Apartment::Tenant.switch(leaser_name)
+        Apartment::Tenant.switch!(leaser_name)
         Leases.current = self
       end
 
@@ -84,7 +84,7 @@ module Leases
       #
       def leave
         Leases.current = nil
-        Apartment::Tenant.reset
+        Apartment::Tenant.switch!
       end
 
       ##

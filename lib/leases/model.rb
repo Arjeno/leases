@@ -42,7 +42,7 @@ module Leases
         Apartment.excluded_models += [self.name]
         Apartment.excluded_models.uniq!
 
-        Apartment::Tenant.init
+        Apartment::Tenant.init unless ARGV.any? { |arg| arg =~ /\Aassets:(?:precompile|clean)\z/ }
       end
 
     end

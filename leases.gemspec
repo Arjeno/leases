@@ -25,5 +25,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'with_model'
   gem.add_development_dependency 'test-unit', '~> 3.0'
 
-  gem.add_dependency 'apartment', '>= 1.0.0'
+  gem.add_dependency 'ros-apartment', '>= 1.0.0'
 end
